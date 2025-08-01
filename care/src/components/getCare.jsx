@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import Notify from './Notify';
 import AIChat from './AIChat';
@@ -92,20 +91,8 @@ const GetCare = () => {
           {renderContent()}
         </div>
       )}
-=======
-import React from 'react';
-
-const GetCare = () => {
-  return (
-    <div>
-      <h2>Get Care Page</h2>
->>>>>>> 2b78b4bd69c8f35aaec02d63305c2ac10c60a083
     </div>
   );
 };
 
-<<<<<<< HEAD
 export default GetCare;
-=======
-export default GetCare;
->>>>>>> 2b78b4bd69c8f35aaec02d63305c2ac10c60a083
