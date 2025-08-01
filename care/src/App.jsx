@@ -4,7 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Navbar from './components/navbar'
 // import Home from './components/home'
 // import About from './components/about'
-// import Contact from './components/contact'
+import Contact from './components/contact'
+import Getcare from './components/getCare'
 
 function App() {
   //  const router = createBrowserRouter([
@@ -27,8 +28,9 @@ function App() {
 
   return (
     <>
-    <Navbar />
-    
+      {/* <Navbar /> */}
+      <Getcare/>
+      {/* <Contact /> */}
       {/* <RouterProvider router={router} />   */}
     </>
   )

@@ -1,27 +1,26 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+// Navbar.jsx
+import React from 'react';
 
-const navbar = () => {
-    return (
-        <><div className="parent">
-            <div>
-                <div className="logo">
-                    <img src="/public/img/" alt="" />
-                </div>
-            </div>
-            <nav>
-<ul>
-    <li>Home</li>
-    <li>About</li>
-    <li>contact</li>
-</ul>
-            </nav>
-            <div className="account">
-                <img src="/src/assets/account.svg" alt="" />
-            </div>
-        </div>
-        </>
-    )
-}
+const Navbar = () => {
+  return (
+    <div className="flex justify-between items-center px-6 py-3 backdrop-blur-md bg-white/30 shadow-md fixed top-0 w-full z-50">
+      <div className="h-12">
+        <img src="/image/nobglogo.png" alt="Logo" className="h-full object-contain" />
+      </div>
 
-export default navbar
+      <nav>
+        <ul className="flex gap-6 text-lg font-medium">
+          <li><a href="#home" className="hover:text-blue-600">Home</a></li>
+          <li><a href="#about" className="hover:text-blue-600">About</a></li>
+          <li><a href="#contact" className="hover:text-blue-600">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div className="h-8 w-8">
+        <img src="/src/assets/account.svg" alt="Account" className="h-full w-full object-cover rounded-full" />
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
