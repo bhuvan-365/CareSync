@@ -1,3 +1,88 @@
-body{
-    background: red;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#home{  
+  height: 100vh;
+  width: 100vw;
+  background-image: url('/image/bg.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: rgb(20, 20, 20);
+}
+.head-content h1{
+  font-size: 8vh;
+  position: relative;
+  top: 20vh;
+  left: 4vw;
+  padding-bottom: 2vh;
+  line-height: 10vh;
+}
+.head-content p{
+  position: relative;
+  top: 20vh;
+  left: 4vw;
+  justify-content: center;
+}
+.send{
+  background-color: black;
+  color: white;
+  border-radius: 22px;
+  width: 10vw;
+  height: 4vh;
+  position: relative;
+  top: 24vh;
+  left: 4vw;
+  cursor: pointer;
+}
+.pp{
+  position: relative;
+  top: 40vh;
+  left: 4vw;
+  display: flex;
+  height: 4.5vh;
+  width: 22vw;
+}
+.pp img {
+  border-radius: 100px;
+  margin-left: -0.4vw; /* overlapping effect */
+}
+.pp img:first-child {
+  margin-left: 0; /* prevent first image from shifting left */
+}
+.pp p{
+  position: relative;
+  top: 1vh;
+  left: 1vw;
+  font-weight: bold;
+}
+.buttons{
+  position: relative;
+  top: 22vh;
+  left: 4vh;
+  display: flex;
+}
+.startHere{
+  background-color: #000; 
+  border: none;
+  border-radius: 50px; 
+  padding: 10px 20px; 
+  margin: 10px; 
+  cursor: pointer;
+  display: inline-block; 
+  color: white;
+}
+.getCare{
+  background-color: transparent; 
+  border: 1px solid black;
+  border-radius: 50px; 
+  padding: 10px 20px; 
+  margin: 10px; 
+  cursor: pointer;
+  display: inline-block; 
+  color: black;
 }
