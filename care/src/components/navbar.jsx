@@ -6,16 +6,18 @@ const navbar = () => {
         <><div className="parent">
             <div>
                 <div className="logo">
-                    <img src="" alt="" />
+                    <img src="/public/img/" alt="" />
                 </div>
             </div>
             <nav>
-                <NavLink className={(e) => { return e.isActive ? "black" : "" }} to="/"><li>Home</li></NavLink>
-                <NavLink className={(e) => { return e.isActive ? "black" : "" }} to="/about"><li>About</li></NavLink>
-                <NavLink className={(e) => { return e.isActive ? "black" : "" }} to="/contact"><li>contact </li></NavLink>
+<ul>
+    <li>Home</li>
+    <li>About</li>
+    <li>contact</li>
+</ul>
             </nav>
             <div className="account">
-                <img src="" alt="" />
+                <img src="/src/assets/account.svg" alt="" />
             </div>
         </div>
         </>

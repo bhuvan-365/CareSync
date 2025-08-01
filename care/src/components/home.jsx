@@ -1,9 +1,13 @@
 import React from 'react'
+import '../components/home.css'
 
-export const home = () => {
+const home = () => {
   return (
     <>
-    home
+        <div>home</div>
+
     </>
   )
 }
+
+export default home
