@@ -13,6 +13,7 @@
   background-repeat: no-repeat;
   background-position: center;
   color: rgb(20, 20, 20);
+  max-width: 100%;
 }
 .head-content h1{
   font-size: 8vh;
@@ -26,7 +27,8 @@
   position: relative;
   top: 20vh;
   left: 4vw;
-  justify-content: center;
+  width: 12vw;
+  width: fit-content;
 }
 .send{
   background-color: black;
@@ -64,6 +66,7 @@
   position: relative;
   top: 22vh;
   left: 4vh;
+  width: 25vw;
   display: flex;
 }
 .startHere{
