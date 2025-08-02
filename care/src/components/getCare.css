@@ -1,0 +1,47 @@
+/* Add this to your CSS file */
+.get-care-container {
+  margin-top: 80px; /* Adjust this value based on your navbar height */
+}
+
+.upper {
+  min-height: 250px; /* Minimum height for smaller screens */
+}
+
+.cards-container {
+  width: 100%;
+  max-width: 1200px; /* Optional: limit maximum width */
+  margin: 0 auto;
+}
+.padding{
+    padding: 15px;
+}
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .get-care-container {
+    margin-top: 60px; /* Smaller margin for mobile */
+  }
+  
+  .cards-container {
+    gap: 12px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    height: 150px !important;
+    width: 140px !important;
+  }
+  
+  .card div {
+    font-size: 18px !important;
+  }
+}

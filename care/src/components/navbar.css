@@ -1,0 +1,256 @@
+/* Base Styles */
+.navbar {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90vw;
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 0.75rem 1.5rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo-container {
+  height: 3rem;
+  flex-shrink: 0;
+}
+
+.logo {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: none;
+}
+
+.nav-links {
+  margin-left: 25px;
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #3b82f6;
+}
+
+/* Account Icons */
+.account-icon {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+}
+
+.account-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.desktop-account {
+  display: none;
+}
+
+/* Mobile Menu Button */
+.mobile-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobile-menu-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.hamburger-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #333;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  position: fixed;
+  top: calc(1rem + 4.5rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(-150%);
+  width: 80vw;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+  border-radius: 15px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.mobile-nav.open {
+  transform: translateX(-50%) translateY(0);
+}
+
+.mobile-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-nav-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+
+
+.mobile-account-image {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.75rem;
+  border-radius: 50%;
+}
+
+/* Responsive Breakpoints */
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: block;
+    flex-grow: 1;
+    margin: 0 2rem;
+  }
+
+  .desktop-account {
+    display: block;
+  }
+
+  .mobile-menu-button {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: flex;
+  }
+}
+.get-care-container {
+  margin-top: 80px;
+}
+
+.cards-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 640px) {
+  .card {
+    height: 100px !important;
+    width: 100px !important;
+    font-size: 0.875rem !important;
+    padding: 0.5rem !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .cards-container {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  .card {
+    height: 90px !important;
+    width: 90px !important;
+  }
+}
+
+/* Add these to your navbar.css */
+.nav-link, .mobile-nav-link {
+  /* Your existing link styles */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+  text-decoration: none;
+  /* Add any other styles you had for your links */
+}
+
+/* Make sure buttons look like links */
+button.nav-link, button.mobile-nav-link {
+  display: inline;
+  color: inherit;
+  text-align: left;
+  width: 100%;
+}
+
+/* Desktop Navigation Links - Remove BG hover */
+.nav-links .nav-link {
+  color: #333; /* Default color */
+  transition: color 0.3s ease; /* Only transition color */
+  position: relative;
+  padding: 0.5rem 0;
+  background-color: transparent !important; /* Force no background */
+}
+
+.nav-links .nav-link:hover {
+  color: #4f46e5; /* Change text color on hover */
+  background-color: transparent !important; /* No background on hover */
+}
+
+/* Mobile Navigation Links - Remove BG hover */
+.mobile-nav-links .mobile-nav-link {
+  color: #333;
+  transition: color 0.3s ease; /* Only transition color */
+  padding: 0.75rem 1rem;
+  display: block;
+  background-color: transparent !important;
+}
+
+.mobile-nav-links .mobile-nav-link:hover {
+  color: #4f46e5;
+  background-color: transparent !important; /* Remove mobile bg hover */
+}

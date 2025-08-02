@@ -1,0 +1,184 @@
+/* reportViewer.css */
+:root {
+  --primary: #2563eb;
+  --primary-light: #3b82f6;
+  --secondary: #1e40af;
+  --text: #1f2937;
+  --text-light: #6b7280;
+  --border: #e5e7eb;
+  --bg: #f9fafb;
+}
+
+.report-viewer-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+}
+
+.report-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.report-header h1 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.hospital-info {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.patient-info-section {
+  margin-bottom: 2rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.info-item {
+  background: var(--bg);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.info-label {
+  font-weight: 600;
+  display: block;
+  color: var(--primary);
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.info-value {
+  font-size: 1.1rem;
+}
+
+.diagnosis-section {
+  margin-bottom: 2rem;
+}
+
+.diagnosis-card {
+  background: #f0f9ff;
+  border-left: 4px solid var(--primary);
+  padding: 1.5rem;
+  border-radius: 0 8px 8px 0;
+  margin-top: 1rem;
+}
+
+.medication-section {
+  margin-bottom: 2rem;
+}
+
+.medication-list {
+  margin-top: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.medication-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.medication-item:last-child {
+  border-bottom: none;
+}
+
+.med-name {
+  font-weight: 600;
+}
+
+.med-dosage {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.no-meds {
+  color: var(--text-light);
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.report-footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.disclaimer {
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.report-error {
+  text-align: center;
+  padding: 2rem;
+  color: #ef4444;
+  background: #fee2e2;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+/* Print styles */
+@media print {
+  .report-viewer-container {
+    box-shadow: none;
+    padding: 0;
+  }
+  
+  button {
+    display: none !important;
+  }
+}
+/* Add to your existing CSS */
+.qr-preview {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: var(--border-radius);
+  border: 1px solid #e0e0e0;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.qr-preview h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--dark);
+}
+
+.qr-preview pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+  font-family: monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .qr-preview {
+    font-size: 0.8rem;
+  }
+}
