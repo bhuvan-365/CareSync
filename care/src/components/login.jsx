@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import './login.css';
+import './login.css';
 
 const Login = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -12,22 +12,24 @@ const Login = () => {
   });
 
   const handleLogin = (e) => {
-    e.preventDefault();
-    const users = JSON.parse(localStorage.getItem('users')) || [];
+  e.preventDefault();
+  const users = JSON.parse(localStorage.getItem('users')) || [];
 
-    const found = users.find(
-      (user) =>
-        user.email === loginData.email && user.password === loginData.password
-    );
+  const found = users.find(
+    (user) =>
+      user.email === loginData.email && user.password === loginData.password
+  );
 
-    if (found) {
-      alert('Login successful!');
-      localStorage.setItem('loggedInUser', JSON.stringify(found));
-      window.location.href = '/getCare'; // update route as needed
-    } else {
-      alert('Invalid email or password!');
-    }
-  };
+  if (found) {
+    alert('Login successful!');
+    localStorage.setItem('loggedInUser', JSON.stringify(found));
+    // Instead of window.location.href, use navigate if using React Router
+    window.location.href = '/getCare'; // or your dashboard route
+  } else {
+    alert('Invalid email or password!');
+  }
+};
+
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -69,7 +71,7 @@ const Login = () => {
     <div className="loginbody">
       <div className="overlay-login"></div>
       <div className="user">
-        <h1><a href="/">FitX</a></h1>
+        <h1><a href="/">VitalLink</a></h1>
       </div>
 
       {!isSignup ? (
