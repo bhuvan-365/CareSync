@@ -182,21 +182,21 @@
 }
 
 .reg {
-    margin-top: 4vh;
     background-color: white;
-    margin-top: 5vh;
-    margin-left: 5vw;
-    margin-bottom: 3vh;
     border: none;
     height: 4vh;
     width: 9vw;
     border-radius: 22px;
     cursor: pointer;
-    margin-right: 1vw;
+   margin: 3vh;
     color: black;
+    margin-right: -1vw;
+    margin-top: 4vh;
 }
 
 .back-to-login {
+       margin: 3vh;
+           margin-top: 4vh;
     background-color: white;
     border: none;
     height: 4vh;
@@ -204,6 +204,10 @@
     border-radius: 22px;
     cursor: pointer;
     color: black;
+}
+.button-reg{
+    display: flex;
+
 }
 
 /* Responsive styles */
@@ -232,4 +236,12 @@
     .back-to-login {
         width: 30vw;
     }
+}
+.clc{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.upd{
+    margin-right: 15px!important;
 }

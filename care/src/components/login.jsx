@@ -21,7 +21,6 @@ const Login = () => {
   );
 
   if (found) {
-    alert('Login successful!');
     localStorage.setItem('loggedInUser', JSON.stringify(found));
     // Instead of window.location.href, use navigate if using React Router
     window.location.href = '/getCare'; // or your dashboard route
@@ -104,6 +103,8 @@ const Login = () => {
               <input type="checkbox" required /> Agree with{' '}
               <a href="#">Terms & Conditions</a>
             </label>
+            
+           
             <button className="button1" type="submit">
               Sign In
             </button>
@@ -116,6 +117,7 @@ const Login = () => {
               </a>
             </label>
           </form>
+       
         </div>
       ) : (
         <div className="signup">
@@ -170,6 +172,8 @@ const Login = () => {
               <a href="#">Terms & Conditions</a>
             </label>
             <br />
+        
+        <div class="button-reg">
             <button className="reg" type="submit">
               Register
             </button>
@@ -180,6 +184,8 @@ const Login = () => {
             >
               Sign In
             </button>
+         </div>
+         
           </form>
         </div>
       )}

@@ -29,31 +29,25 @@ function AIChat() {
   const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
   // Function to generate system prompt with current medical data
-  const getSystemPrompt = () => {
-    return {
-      role: "model",
-      parts: [{
-        text: `You are MediAI, a specialized medical assistant for ${userMedicalData?.name || 'the patient'}. You MUST:
-1. ALWAYS reference the patient's specific medical data when responding to health questions
-2. PROVIDE TAILORED INFORMATION about their conditions and medications
-3. EXPLAIN medical concepts in relation to their specific situation
-4. NEVER say you don't have access to their data - you DO have their medical context
-
-PATIENT MEDICAL DATA:
+const getSystemPrompt = () => {
+  return {
+    role: "model",
+    parts: [{
+      text: `You are MediAI, a medical assistant. **Max 7 lines per response.**  
+1. ${userMedicalData ? `Use patient data if relevant:` : `No patient data—give general advice.`}  
+2. Keep answers short, clear, and actionable.  
+3. Never say "I can't help"—always respond.  
+4. Explain simply, avoid long paragraphs.  
+5. Suggest seeing a doctor if unsure.  
+6. Stay professional but friendly.  
 ${userMedicalData ? `
-- Name: ${userMedicalData.name || 'Not provided'}
-- Conditions: ${userMedicalData.disorders?.join(', ') || 'None reported'}
-- Medications: ${userMedicalData.medicines?.map(m => `${m.name} (${m.dosage})`).join(', ') || 'None'}
-` : 'No medical data available'}
-
-RESPONSE GUIDELINES:
-1. When asked about health, ALWAYS reference their specific conditions/meds
-2. Explain how general medical info applies to THEIR situation
-3. For medication questions, consider their specific dosages
-4. Never give direct medical advice - suggest consulting their doctor`
-      }],
-    };
+Patient Context:  
+- Name: ${userMedicalData.name || 'Not provided'}  
+- Conditions: ${userMedicalData.disorders?.join(', ') || 'None'}  
+- Meds: ${userMedicalData.medicines?.map(m => `${m.name} (${m.dosage})`).join(', ') || 'None'}` : ''}`  
+    }],
   };
+};
 
   const chatHistory = useRef([getSystemPrompt()]);
 
@@ -241,9 +235,7 @@ RESPONSE GUIDELINES:
           </svg>
           <h2 className="logo-text">MediAI</h2>
         </div>
-        <button id="close-chatbot" className="material-symbols-rounded">
-          <span className="material-symbol">{materialSymbols.keyboard_arrow_down}</span>
-        </button>
+
       </div>
 
       <div className="chat-body" ref={chatBodyRef}>
@@ -284,11 +276,12 @@ RESPONSE GUIDELINES:
             onKeyDown={handleKeyDown}
             required
           />
-          <div className="chat-controls">
-            <button type="button" className="material-symbols-rounded">
+          <div className="chat-controls  cvc">
+            <button type="button" className="material-symbols-rounded clc">
               <span className="material-symbol">{materialSymbols.sentiment_satisfied}</span>
             </button>
-            <div className={`file-upload-wrapper ${filePreview ? 'file-uploaded' : ''}`}>
+          
+            <div className={`upd file-upload-wrapper ${filePreview ? 'file-uploaded' : ''}`} >
               <input
                 type="file"
                 accept="image/*"
@@ -301,7 +294,7 @@ RESPONSE GUIDELINES:
               <button
                 type="button"
                 id="file-upload"
-                className="material-symbols-rounded"
+                className="material-symbols-rounded clc"
                 onClick={() => fileInputRef.current.click()}
               >
                 <span className="material-symbol">{materialSymbols.attach_file}</span>
@@ -309,7 +302,7 @@ RESPONSE GUIDELINES:
               <button
                 type="button"
                 id="file-cancel"
-                className="material-symbols-rounded"
+                className="material-symbols-rounded "
                 onClick={removeFile}
               >
                 <span className="material-symbol">{materialSymbols.close}</span>
@@ -318,7 +311,7 @@ RESPONSE GUIDELINES:
             <button
               type="submit"
               id="send-message"
-              className="material-symbols-rounded"
+              className="material-symbols-rounded clc"
               style={{ display: (inputMessage.trim() || filePreview) ? 'block' : 'none' }}
             >
               <span className="material-symbol">{materialSymbols.arrow_upward}</span>

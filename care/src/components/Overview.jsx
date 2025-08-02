@@ -47,7 +47,6 @@ const MedicalRecords = () => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: acceptedFiles => {
       if (images.length >= 3) {
-        alert("Maximum 3 images allowed");
         return;
       }
       const filesToAdd = acceptedFiles.slice(0, 3 - images.length);
@@ -180,7 +179,7 @@ const MedicalRecords = () => {
                 value={med.dosage}
                 onChange={(e) => handleMedicineChange(index, "dosage", e.target.value)}
                 placeholder="Dosage"
-                required
+                required className="dosage"
               />
               {medicines.length > 1 && (
                 <button
