@@ -29,25 +29,27 @@ function AIChat() {
   const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
   // Function to generate system prompt with current medical data
-const getSystemPrompt = () => {
-  return {
-    role: "model",
-    parts: [{
-      text: `You are MediAI, a medical assistant. **Max 7 lines per response.**  
-1. ${userMedicalData ? `Use patient data if relevant:` : `No patient data—give general advice.`}  
-2. Keep answers short, clear, and actionable.  
-3. Never say "I can't help"—always respond.  
-4. Explain simply, avoid long paragraphs.  
-5. Suggest seeing a doctor if unsure.  
-6. Stay professional but friendly.  
+  const getSystemPrompt = () => {
+    return {
+      role: "model",
+      parts: [{
+        text: `You are MediAI, a medical assistant. Strict rules:
+1. ONLY answer health/medical questions
+2. For non-medical queries, respond: "I specialize in health questions only"
+3. Max 7 lines per response
+4. ${userMedicalData ? `Use patient data if relevant:` : `Give general medical advice`}  
+5. Keep answers clear and actionable
+6. Never say "I can't help" - redirect to health topics
+7. Always suggest consulting a doctor
+
 ${userMedicalData ? `
 Patient Context:  
 - Name: ${userMedicalData.name || 'Not provided'}  
 - Conditions: ${userMedicalData.disorders?.join(', ') || 'None'}  
-- Meds: ${userMedicalData.medicines?.map(m => `${m.name} (${m.dosage})`).join(', ') || 'None'}` : ''}`  
-    }],
+- Meds: ${userMedicalData.medicines?.map(m => `${m.name} (${m.dosage})`).join(', ') || 'None'}` : ''}`
+      }],
+    };
   };
-};
 
   const chatHistory = useRef([getSystemPrompt()]);
 
@@ -131,6 +133,30 @@ Patient Context:
   };
 
   const generateBotResponse = async (userMessage) => {
+    // First check if question is health-related
+    const healthKeywords = [
+      'pain', 'medicine', 'doctor', 'symptom', 'diagnos', 'treatment',
+      'health', 'medical', 'illness', 'disease', 'condition', 'pharma',
+      'pill', 'hospital', 'blood', 'test', 'x-ray', 'scan', 'ache',
+      'fever', 'cough', 'headache', 'allerg', 'prescription', 'dosage'
+    ];
+    
+    const isHealthQuestion = healthKeywords.some(keyword => 
+      userMessage.toLowerCase().includes(keyword)
+    );
+
+    if (!isHealthQuestion) {
+      setMessages(prev => [
+        ...prev,
+        {
+          type: 'bot',
+          text: "I specialize in health and medical questions only. How can I help with your health concerns today?",
+          attachment: null
+        }
+      ]);
+      return;
+    }
+
     setIsBotThinking(true);
     
     // Ensure we have latest medical context
@@ -235,7 +261,6 @@ Patient Context:
           </svg>
           <h2 className="logo-text">MediAI</h2>
         </div>
-
       </div>
 
       <div className="chat-body" ref={chatBodyRef}>
